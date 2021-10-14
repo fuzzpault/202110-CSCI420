@@ -7,7 +7,7 @@ Desc: UDP Client/Server Demo
 """
 import socket
 
-serverIP = '10.18.103.54' #'localhost'
+serverIP = '10.18.100.150' #localhost'
 serverPort = 1200
 
 
@@ -20,7 +20,7 @@ if __name__ == "__main__":
     # Wait for a response
     newMessage = clientSocket.recv(2048)
     
-    print("Translated: {}".format(newMessage))
+    print("Translated: {}".format(newMessage.decode('utf-8')))
         
     clientSocket.close()
     

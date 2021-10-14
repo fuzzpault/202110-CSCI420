@@ -24,7 +24,7 @@ if __name__ == "__main__":
         client_socket, addr = server.accept()
         print("Got new connection from {}".format(addr))
 
-        newMessage = server.recv(2048)
+        newMessage = client_socket.recv(2048)
          
         print("Got: {}".format(newMessage))
         

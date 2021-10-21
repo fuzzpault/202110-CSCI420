@@ -23,14 +23,17 @@ if __name__ == "__main__":
         print("Waiting for connect")
         client_socket, addr = server.accept()
         print("Got new connection from {}".format(addr))
-
-        newMessage = client_socket.recv(2048)
-         
-        print("Got: {}".format(newMessage))
-        
-        newMessage = str(newMessage).upper()
-        
-        client_socket.send(newMessage.encode('utf-8'))
+        counter = 0
+        while True:
+            counter += 1
+            newMessage = client_socket.recv(2048)
+            if not newMessage:
+                break
+            print("Got: {}".format(newMessage))
+            
+            newMessage = str(newMessage).upper() + str(counter)
+            
+            client_socket.send(newMessage.encode('utf-8'))
         client_socket.close()
         print("Closed connection to {}".format(addr))
     
